@@ -1,0 +1,17 @@
+{% extends 'blog/base1.html' %}
+{% load staticfiles %}
+{% block content %}
+<a href="/blog"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
+{% if user.is_anonymous %}
+	<p>Must be become a member to post an entries</p>
+	<a href="/register">Click here to register</a> or <a href="/login">Login</a>
+{% else %}
+	<h1>New post</h1>
+	<form action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{form.as_p }}
+		
+		<input type="submit" value="Preview">
+	</form>
+{% endif %}
+{% endblock %}

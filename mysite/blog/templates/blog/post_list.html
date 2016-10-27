@@ -1,0 +1,29 @@
+{% extends 'blog/base1.html' %}
+
+{% block content %}
+	{% for post in posts %}
+    <div class="post post_list">
+        {% if post.published_date and post.category|stringformat:"s" == request.get_full_path|stringformat:"s"|cut:"/" %}
+                <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+               
+               <div class="post_image">
+                   <a href="{{ post.image.url }}"><img src="{{ post.image.url }} " height="100" width="150" alt=""></a>
+               </div>
+               <div class="post_list_text">
+                    <div class="post_text">
+                        <p>{{ post.text|truncatewords:50|safe }}  <a class="read_more" href="{% url 'post_detail' pk=post.pk %}">  read more</a></p>
+                        <a href="{% url 'blog.views.post_detail' pk=post.pk %}">Comments: {{ post.comments.count }}</a>
+                    </div>       
+                    <div class="post_author"> 
+                    	<a href="#"><b>{{ post.author }}</b></a>
+                    </div>
+                    <div class="post_date">
+                        {{ post.published_date|date:'d-m-Y' }} 
+                    </div>
+                </div>
+                <div class="clear"></div>
+
+        {% endif %}
+    </div>
+	{% endfor %}
+{% endblock %}

@@ -1,0 +1,100 @@
+* {
+	padding : 0;
+    margin : 0;
+
+}
+
+
+h1 a {
+    color: #FCA205;
+    font-family: 'Lobster';
+}
+
+body {
+	background: #eee;
+	/*padding-left: 15px;*/
+}
+span.error_message {
+    color : red;
+}
+.error { background: #F0D6D6; padding: 0.5em; }
+.page-header {
+    background-color: #ff9400;
+    margin-top: 0;
+    padding: 20px 20px 20px 40px;
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    color: #ffffff;
+    font-size: 36pt;
+    text-decoration: none;
+}
+.page-header h1{
+    width: 30%;
+    display: inline;
+}
+.sign-bar {
+    display: inline-block;
+    float : right;
+}
+
+.content {
+    margin-left: 40px;
+}
+
+h1, h2, h3, h4{
+    font-family: 'Lobster', cursive;
+}
+
+.save {
+    float: right;
+}
+
+
+.top-menu, .top-menu:hover, .top-menu:visited {
+    color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
+form label {
+    display: inline-block;
+    width: 100px;
+    padding: 5px;
+}
+form input {
+  
+}
+form button {
+    margin-left: 105px;
+
+}
+
+#note {
+    font-size: 14px;
+    color: red;
+    margin-left: 13%;
+}
+
+
+.author {
+    display: inline;
+    width : 20%;
+    color: #222;
+}
+.date{
+    display: inline;
+    float: right;
+}
+.post_list p{
+    /*max-height: 58px;*/
+    overflow: hidden;
+}
+.post_detail #author {
+    float : right;
+}
+
+.read_more {
+    font-size: 10px;
+}

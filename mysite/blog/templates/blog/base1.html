@@ -1,0 +1,70 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>VLaCuta</title>
+        <script
+              src="https://code.jquery.com/jquery-2.2.4.js"
+              integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
+              crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+        <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="{% static 'css/log.css' %}">
+        <script type="text/javascript" src="{% static 'js/myjavascript.js' %}"></script>
+    </head>
+    <body>
+        <div class="page-header">
+            <h1><a href="/">VLaCuta</a></h1>
+            <div class="sign-bar">
+                {% block title %}
+                {% if user.is_authenticated %}
+                    <h4>Welcome, {{ user.first_name }} </h4> <a href="/logout">[Logout]</a> <a href="{% url 'accounts:password_change' %}">[Change Password]</a>
+                {% else %}
+                    <h4>Welcome, Guest </h4><a href="/login">[Login]</a> or <a href="/register">[Sign up]</a>
+
+                {% endif %}        
+                {% endblock %}
+            </div>
+        </div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+
+                
+                    {% for category in categorys %}
+                        {{ category.name }}
+                    {% endfor %}
+               
+                    
+
+                    <li class="active"><a href="/home">Home</a></li>
+                    <li><a href="/news/">News</a></li>
+                    <li><a href="/sport/">Sport</a></li>
+                    <li><a href="/travel/">Travel</a></li>
+                    <li><a href="/capital/">Capital</a></li>
+                    <li><a href="/earth/">Earth</a></li>
+                    <li><a href="/weather/">Weather</a></li>
+                    
+                    <!-- <li><a href="{url 'taxonomy' category='weather' %}">Weather</a></li> -->
+                </ul>
+            </div>
+            <div class="new_and_draff">
+                <a href="{% url 'post_new' %}"><span class="glyphicon glyphicon-plus"></span> New post&nbsp;&nbsp;</a>
+                <a href="{% url 'post_draft_list' %}"><span class="glyphicon glyphicon-edit"></span> Draft post</a>
+            </div>
+        </nav>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                {% block content %}
+                <h3><a href="/blog">Click here to join my blog</a></h3>
+                
+
+                {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,23 @@
+{% extends 'blog/base1.html' %}
+
+{% block content %}
+	<a href="/blog"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
+	{% if user.is_anonymous %}
+		<a href="/login">Login</a>
+	{% else %}
+		{% for post in posts %}
+		    {% if user.username|stringformat:"s" == post.author|stringformat:"s" or user.username|stringformat:"s" == "admin" %}
+	        <div class="post">
+	            <p class="date">created: {{ post.created_date|date:'d-m-Y' }}</p>
+	            <h1><a href="{% url 'blog.views.post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+	            <p>{{ post.text|safe|truncatechars:200 }}</p>
+	        </div>
+	        <div class="author"> 
+    			<a href=""><b>{{ post.author }} </b> </a>
+    		</div>
+			{% endif %}
+		
+		{% endfor %}
+		
+	{% endif %}
+{% endblock %}
